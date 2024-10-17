@@ -6,8 +6,10 @@ import {
   Flex,
   Spacer,
   ButtonGroup,
-  Button
+  Button,
+  Tooltip,
 } from "@chakra-ui/react"
+import { QuestionIcon } from "@chakra-ui/icons"
 
 function App() {
   const [body, setBody] = useState("")
@@ -54,7 +56,12 @@ function App() {
             ></Progress>
           </Box>
           <Flex>
-            <p>Length: {calculateLengthPoint()}/5 points</p>
+            <p>
+              Length: {calculateLengthPoint()}/5 points{" "}
+              <Tooltip label={lengthGradeText()}>
+                <QuestionIcon color="gray.500" />
+              </Tooltip>
+            </p>
             <Spacer />
             <p>{wordCount}/100</p>
           </Flex>
@@ -74,4 +81,19 @@ function App() {
   )
 }
 
+function lengthGradeText() {
+  return (
+    <>
+      1point: 90~120words
+      <br />
+      2point: ~145words
+      <br />
+      3point: ~175words
+      <br />
+      4point: ~200words
+      <br />
+      5point: ~230words
+    </>
+  )
+}
 export default App
