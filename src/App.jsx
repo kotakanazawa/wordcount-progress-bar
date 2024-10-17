@@ -20,16 +20,22 @@ function App() {
     }
   }
 
+  function handleChange(e) {
+    const newBody = e.target.value
+    const newWordCount = newBody.split(/\s+/).filter(Boolean).length
+    if (newWordCount <= 100) {
+      setBody(newBody)
+      setWordCount(newWordCount)
+    }
+  }
+
   return (
     <>
       <div className="h-screen w-screen flex justify-center items-center">
         <div>
           <Textarea
             value={body}
-            onChange={(e) => {
-              setBody(e.target.value)
-              setWordCount(e.target.value.split(/\s+/).filter(Boolean).length)
-            }}
+            onChange={handleChange}
             rows="10"
             cols="50"
           />
