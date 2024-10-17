@@ -1,6 +1,13 @@
 import { useState } from "react"
-import { Textarea } from "@chakra-ui/react"
-import { Progress } from "@chakra-ui/react"
+import {
+  Textarea,
+  Progress,
+  Box,
+  Flex,
+  Spacer,
+  ButtonGroup,
+  Button
+} from "@chakra-ui/react"
 
 function App() {
   const [body, setBody] = useState("")
@@ -33,16 +40,26 @@ function App() {
     <>
       <div className="h-screen w-screen flex justify-center items-center">
         <div>
-          <Textarea
-            value={body}
-            onChange={handleChange}
-            rows="10"
-            cols="50"
-          />
-          <p>Max Word Count: 100</p>
-          <p>Word Count: {wordCount}</p>
-          <p>Length Point: {calculateLengthPoint()}</p>
-          <Progress value={wordCount} max={100} colorScheme="yellow"></Progress>
+          <Textarea value={body} onChange={handleChange} rows="10" cols="50" />
+          <Box mt={3}>
+            <Progress
+              value={wordCount}
+              max={100}
+              colorScheme="yellow"
+              borderRadius="md"
+            ></Progress>
+          </Box>
+          <Flex>
+            <p>Length: {calculateLengthPoint()}/5 points</p>
+            <Spacer />
+            <p>{wordCount}/100</p>
+          </Flex>
+          <Flex justifyContent='flex-end'>
+            <ButtonGroup mt='3'>
+              <Button size='sm'>保存する</Button>
+              <Button colorScheme='teal' size='sm'>提出する</Button>
+            </ButtonGroup>
+          </Flex>
         </div>
       </div>
     </>
