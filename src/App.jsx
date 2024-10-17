@@ -43,8 +43,8 @@ function App() {
   return (
     <>
       <div className="h-screen w-screen flex justify-center items-center">
-        <div>
-          <Textarea value={body} onChange={handleChange} rows="10" cols="50" />
+        <Box w="60%">
+          <Textarea value={body} onChange={handleChange} rows="5" w="100%" />
           <Box mt={3}>
             <Progress
               value={wordCount}
@@ -60,13 +60,15 @@ function App() {
           </Flex>
           <Flex justifyContent="flex-end">
             <ButtonGroup mt="3">
-              <Button size="sm" disabled={disableButton()}>保存する</Button>
+              <Button size="sm" disabled={disableButton()}>
+                保存する
+              </Button>
               <Button colorScheme="teal" size="sm" disabled={disableButton()}>
                 提出する
               </Button>
             </ButtonGroup>
           </Flex>
-        </div>
+        </Box>
       </div>
     </>
   )
