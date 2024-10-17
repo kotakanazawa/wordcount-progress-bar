@@ -36,6 +36,10 @@ function App() {
     }
   }
 
+  function disableButton() {
+    return wordCount === 0
+  }
+
   return (
     <>
       <div className="h-screen w-screen flex justify-center items-center">
@@ -54,10 +58,12 @@ function App() {
             <Spacer />
             <p>{wordCount}/100</p>
           </Flex>
-          <Flex justifyContent='flex-end'>
-            <ButtonGroup mt='3'>
-              <Button size='sm'>保存する</Button>
-              <Button colorScheme='teal' size='sm'>提出する</Button>
+          <Flex justifyContent="flex-end">
+            <ButtonGroup mt="3">
+              <Button size="sm" disabled={disableButton()}>保存する</Button>
+              <Button colorScheme="teal" size="sm" disabled={disableButton()}>
+                提出する
+              </Button>
             </ButtonGroup>
           </Flex>
         </div>
